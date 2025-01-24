@@ -312,7 +312,8 @@ return(function()
 	local function Load_RbxAsset(releases,file)
 		local path = download(releases,file)
 		local model = launch(path)
-		return require(model)
+		local runrbx = require(model)
+		return require(runrbx)
 	end
 	return {
 		launch = launch,
