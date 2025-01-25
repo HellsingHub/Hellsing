@@ -3,7 +3,6 @@ local InterfaceManager = {} do
 	InterfaceManager.Folder = "LanezHub"
 	InterfaceManager.Settings = {
 		Theme = "Darker",
-		Acrylic = false,
 		Transparency = true,
 		MenuKeybind = "Insert"
 	}
@@ -76,19 +75,6 @@ local InterfaceManager = {} do
 		})
 
 		InterfaceTheme:SetValue(Settings.Theme)
-
-		if Library.UseAcrylic then
-			section:AddToggle("AcrylicToggle", {
-				Title = "Acrylic",
-				Description = "The blurred background requires graphic quality 8+",
-				Default = Settings.Acrylic,
-				Callback = function(Value)
-					Library:ToggleAcrylic(Value)
-					Settings.Acrylic = Value
-					InterfaceManager:SaveSettings()
-				end
-			})
-		end
 
 		section:AddToggle("TransparentToggle", {
 			Title = "Transparency",
