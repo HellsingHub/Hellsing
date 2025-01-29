@@ -340,18 +340,10 @@ function DrawingLibrary:Cursor(Config)
 	end)
 end
 
-function GetType(Self, Object, Default, Type, UseProxify)
-	if typeof(Object) == Type then
-		return UseProxify and Self.Proxify(Object) or Object
-	end
-
-	return UseProxify and Self.Proxify(Default) or Default
-end
-
 function DrawingLibrary:Watermark(Watermark)
-    Watermark = GetType(Watermark,{},"table")
-    Watermark.Title = GetType(Watermark.Title,"Title","string")
-    Watermark.Enabled = GetType(Watermark.Enabled,false,"boolean")
+	if typeof(Watermark) ~= "table" then 
+		return  
+	end
 
     local WaterText = AddDrawing("Text", {
         Center = false,
