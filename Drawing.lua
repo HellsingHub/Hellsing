@@ -340,7 +340,15 @@ function DrawingLibrary:Cursor(Config)
 	end)
 end
 
---[[function DrawingLibrary:Watermark(Watermark)
+function GetType(Self, Object, Default, Type, UseProxify)
+	if typeof(Object) == Type then
+		return UseProxify and Self.Proxify(Object) or Object
+	end
+
+	return UseProxify and Self.Proxify(Default) or Default
+end
+
+function DrawingLibrary:Watermark(Watermark)
     Watermark = GetType(Watermark,{},"table")
     Watermark.Title = GetType(Watermark.Title,"Title","string")
     Watermark.Enabled = GetType(Watermark.Enabled,false,"boolean")
@@ -394,15 +402,8 @@ end
         BorderWindow.Size = MainWindow.Size + Vector2.new(2,2)
         Border2Window.Size = BorderWindow.Size + Vector2.new(2,2)
     end
-    function Bracket:WatermarkToggle(Bool)
-        WaterText.Visible = Bool
-        MainWindow.Visible = Bool
-        BorderWindow.Visible = Bool
-        Border2Window.Visible = Bool
-    end
-
     return Watermark
-end]]
+end
 
 function DrawingLibrary:FoVCircle(Name,Config)
 	local FovCircle = AddDrawing("Circle",{ZIndex = 3})
