@@ -4,7 +4,7 @@ local InterfaceManager = {} do
 	InterfaceManager.Settings = {
 		Theme = "Darker",
 		Transparency = true,
-		MenuKeybind = "Insert"
+		MenuKeybind = "M"
 	}
 
 	function InterfaceManager:SetFolder(folder)
